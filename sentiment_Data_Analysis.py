@@ -18,7 +18,7 @@ if __name__ == '__main__':
         os.makedirs(outDir)
 
     tick_Name = ['TESLA','FACEBOOK','APPLE_INC','EXXON_MOBIL','JPMORGAN','BANK_OF_AMERICA','GENERAL_MOTOR','AMAZON','MICROSOFT','INTEL_CORP']
-    for name in tick_Name[0:1]:
+    for name in tick_Name[0:len(tick_Name)]:
         df = load_Data(name)
         sen = load_Sentiment(name)
         df = df[sen[0:1].index[0]:]
