@@ -3,6 +3,7 @@ import pickle
 import loadTicker
 import quandl
 import mechanize,os,re
+from sentiment_Data_Analysis import generate_result
 
 def get_data(url):
     br = mechanize.Browser()
@@ -76,8 +77,11 @@ if __name__ == '__main__':
     secret_Keys6 = "_zzziPSFhrUUYEM6WZNF"
     tick_List = ['TSLA','FB','AAPL','XOM','JPM','BAC','GM','AMZN','MSFT','INTC'] #selected ticker list
     tick_Name = ['TESLA','FACEBOOK','APPLE_INC','EXXON_MOBIL','JPMORGAN','BANK_OF_AMERICA','GENERAL_MOTOR','AMAZON','MICROSOFT','INTEL_CORP']
-
+    tick_List2 = ['ABT','AGN','MON','SYT','YHOO','MMM','CAT','EBAY','GE']
+    tick_Name2 = ['ABBOTT_LABORATORIES','ALLERGAN_INC','MONSANTO_CO','SYNGENTA_AG','YAHOO_INC','3M_CO','CATERPILLAR_INC','EBAY_INC','GENERAL_ELECTRIC_CO']
     targetExchange = 'US'
 
-    getNASDAQ(tick_List,tick_Name,secret_Keys)
-    get_NS1(tick_List,secret_Keys)
+    getNASDAQ(tick_List2,tick_Name2,secret_Keys2)
+    get_NS1(tick_List2,secret_Keys2)
+    generate_result(tick_Name2)
+
