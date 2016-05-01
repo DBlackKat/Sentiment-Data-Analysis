@@ -3,7 +3,7 @@ import pickle
 import loadTicker
 import quandl
 import mechanize,os,re
-from sentiment_Data_Analysis import generate_result
+from sentiment_test import generate_result
 
 def get_data(url):
     br = mechanize.Browser()
@@ -21,11 +21,10 @@ def get_data(url):
 def gen_url(tickNumber,exchangeCode,API_KEYS):
     return "https://www.quandl.com/api/v3/datasets/NS1/"+str(tickNumber)+"_"+exchangeCode+".json?api_key="+str(API_KEYS)
 
-def get_NS1(tickList,API_KEYS):
+def get_NS1(tickList,tickName,API_KEYS):
     outDir = os.path.join( os.getcwd(),'sentiment') # dir for all inputs and outputs
     if not os.path.exists(outDir):
         os.makedirs(outDir)
-
     for idx,tic in enumerate(tick_List):
         pickle_path = os.path.join(os.getcwd(),'sentiment/'+tick_Name[idx]+'_NS1'+'.p')
         if os.path.isfile(pickle_path):
@@ -34,7 +33,6 @@ def get_NS1(tickList,API_KEYS):
         print("Scrapping NS1/{}{} ...\n ".format(tic,'_US'))
         df =  quandl.get("NS1/"+tic+'_US',authtoken=API_KEYS)
         pickle.dump(df,open(pickle_path,'wb'))
-
 
 def get_Exchange(tick):
     database = os.path.join( os.getcwd(),'GOOG-datasets-codes.csv') # dir for all inputs and outputs
@@ -51,7 +49,6 @@ def get_Exchange(tick):
             print string
             if string == 'NASDAQ_' or string == 'NYSE_':
                 return string
-
     return 'error'
 
 def getNASDAQ(tick_List,tick_Name,API_KEYS):
@@ -69,19 +66,11 @@ def getNASDAQ(tick_List,tick_Name,API_KEYS):
         pickle.dump(df,open(pickle_path,'wb'))
 
 if __name__ == '__main__':
-    secret_Keys = "4FAJeN3Mof45xWy7kJTB"
-    secret_Keys2 = "7nWBk8r-jkZAYHjS_suN"
-    secret_Keys3 = "GgKrsJ1FuGKPqcTP3H3W"
-    secret_Keys4 = "MjPxBBsc_beQd813tG4E"
-    secret_Keys5 = "8DhiPjmLxR7xASuW4rsP"
-    secret_Keys6 = "_zzziPSFhrUUYEM6WZNF"
-    tick_List = ['TSLA','FB','AAPL','XOM','JPM','BAC','GM','AMZN','MSFT','INTC'] #selected ticker list
-    tick_Name = ['TESLA','FACEBOOK','APPLE_INC','EXXON_MOBIL','JPMORGAN','BANK_OF_AMERICA','GENERAL_MOTOR','AMAZON','MICROSOFT','INTEL_CORP']
-    tick_List2 = ['ABT','AGN','MON','SYT','YHOO','MMM','CAT','EBAY','GE']
-    tick_Name2 = ['ABBOTT_LABORATORIES','ALLERGAN_INC','MONSANTO_CO','SYNGENTA_AG','YAHOO_INC','3M_CO','CATERPILLAR_INC','EBAY_INC','GENERAL_ELECTRIC_CO']
+    Secret_Keys2 = ["4FAJeN3Mof45xWy7kJTB"]
+    tick_List = ['TSLA','FB','AAPL','XOM','JPM','BAC','GM','AMZN','MSFT','INTC','ABT','AGN','MON','SYT','YHOO','MMM','CAT','EBAY','GE','MA'] #selected ticker list
+    tick_Name = ['TESLA','FACEBOOK','APPLE_INC','EXXON_MOBIL','JPMORGAN','BANK_OF_AMERICA','GENERAL_MOTOR','AMAZON','MICROSOFT','INTEL_CORP','ABBOTT_LABORATORIES','ALLERGAN_INC','MONSANTO_CO','SYNGENTA_AG','YAHOO_INC','3M_CO','CATERPILLAR_INC','EBAY_INC','GENERAL_ELECTRIC_CO','MASTER_CARD']
     targetExchange = 'US'
-
-    getNASDAQ(tick_List2,tick_Name2,secret_Keys2)
-    get_NS1(tick_List2,secret_Keys2)
-    generate_result(tick_Name2)
+    getNASDAQ(tick_List,tick_Name,secret_Keys2)
+    get_NS1(tick_List,tick_Name,secret_Keys2)
+    generate_result(tick_Name)
 
