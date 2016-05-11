@@ -303,6 +303,7 @@ if __name__ == '__main__':
     # name = 'INTEL_CORP'
     tick_Name = ['TESLA','FACEBOOK','APPLE_INC','EXXON_MOBIL','JPMORGAN','BANK_OF_AMERICA','GENERAL_MOTOR','AMAZON','MICROSOFT','INTEL_CORP','ABBOTT_LABORATORIES','ALLERGAN_INC','MONSANTO_CO','SYNGENTA_AG','YAHOO_INC','3M_CO','CATERPILLAR_INC','EBAY_INC','GENERAL_ELECTRIC_CO','MASTER_CARD']
     plotSentimenAndTime(tick_Name)
+    print "\nonly execute one function in each time as it may crash the program due to the load of plotting\n"
     plotTradeVsNews(tick_Name)
     historyEffectOnSentiment(tick_Name)
     surfacePlot2(tick_Name)
