@@ -1,3 +1,0 @@
-https://www.quandl.com/api/v3/datasets/NS1/AAPL_US.json?api_key=4FAJeN3Mof45xWy7kJTB
-https://www.quandl.com/api/v3/datasets/NS1/00001_HK.json?api_key=4FAJeN3Mof45xWy7kJTB
-https://www.quandl.com/api/v3/datasets/NS1/TYO_JP.json?api_key=4FAJeN3Mof45xWy7kJTB

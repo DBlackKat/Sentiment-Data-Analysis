@@ -3,13 +3,28 @@ import numpy as np
 import os,pickle
 
 def load_Data(name):
-    pickle_path = os.path.join(os.getcwd(),'database/'+name+'.p')
-    df = pd.read_pickle(pickle_path)
+    path = os.path.join(os.getcwd(),'database/'+name+'.p')
+    df = pd.read_pickle(path)
     return df
+
 def load_Sentiment(name):
     pickle_path = os.path.join(os.getcwd(),'sentiment/'+name+'_NS1.p')
     df = pd.read_pickle(pickle_path)
     return df
+
+def binarySearch(database, sentiment_date):
+    first = int(0)
+    last = len(database)
+    while first < last:
+        mid = int((first + last)/2)
+        if database.index[mid] == sentiment_date:
+            return mid
+        elif database.index[mid] > sentiment_date:
+            last = mid-1
+        elif database.index[mid] < sentiment_date:
+            first = mid+1
+    return -1
+
 def relate_SentimentNPrice(name):
     df = load_Data(name)
     sen = load_Sentiment(name)
@@ -22,19 +37,18 @@ def relate_SentimentNPrice(name):
     date = []
     print "reading {}....".format(name)
     for y in range(len(sen)):
-        if(sen['Sentiment Low'].values[y] != 0 ) and (sen['Sentiment High'].values[y] != 0 ) and (sen['News Volume'].values[y] != 0 ) :
-            for x in range(len(df)):
-                if df.index[x] == sen.index[y]:
-                        date.append(sen.index[y])
-                        buy.append(df['Open'].values[x])
-                        for i in range(7):
-                            if((x+1+i*2) < len(df)):
-                                Day[i].append(df['Open'].values[x+1+i])
-                            else:
-                                Day[i].append(np.nan)
-                        senti.append(sen['Sentiment'].values[y])
-                        news_Buzz.append(sen['News Buzz'].values[y])
-                        news_Vol.append(sen['News Volume'].values[y])
+            x = binarySearch(df,sen.index[y])
+            if x >= 0:
+                date.append(sen.index[y])
+                buy.append(df['Open'].values[x])
+                for i in range(7):
+                    if((x+1+i*2) < len(df)):
+                        Day[i].append(df['Close'].values[x+1+i])
+                    else:
+                        Day[i].append(np.nan)
+                senti.append(sen['Sentiment'].values[y])
+                news_Buzz.append(sen['News Buzz'].values[y])
+                news_Vol.append(sen['News Volume'].values[y])
 
     analysis['Buy']=buy
     analysis['1stDay']=Day[0]
@@ -42,8 +56,8 @@ def relate_SentimentNPrice(name):
     analysis['5thDay']=Day[2]
     analysis['7thDay']=Day[3]
     analysis['9thDay']=Day[4]
-    analysis['13thDay']=Day[5]
-    analysis['15thDay']=Day[6]
+    analysis['11thDay']=Day[5]
+    analysis['13thDay']=Day[6]
     analysis['sentiment'] = senti
     analysis['NewsVol'] = news_Vol
     analysis['NewsBuz'] = news_Buzz
@@ -61,5 +75,7 @@ def generate_result(tick_Name):
         print "finish {}...".format(name)
 
 if __name__ == '__main__':
+    tick_Names = ['ABBOTT_LABORATORIES','ALLERGAN_INC']
     tick_Name = ['TESLA','FACEBOOK','APPLE_INC','EXXON_MOBIL','JPMORGAN','BANK_OF_AMERICA','GENERAL_MOTOR','AMAZON','MICROSOFT','INTEL_CORP','ABBOTT_LABORATORIES','ALLERGAN_INC','MONSANTO_CO','SYNGENTA_AG','YAHOO_INC','3M_CO','CATERPILLAR_INC','EBAY_INC','GENERAL_ELECTRIC_CO','MASTER_CARD']
-    generate_result(tick_Name)
+
+    generate_result(tick_Names)

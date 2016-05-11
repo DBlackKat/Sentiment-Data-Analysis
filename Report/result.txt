@@ -1,0 +1,57 @@
+1 day margin
+slope = 2.8425724083, intercept= 0.211919794349, r_value=0.0275968759273, p_value=0.000957009560303, std_err=0.860458305582
+1 day margin correlation with sentiment : 0.0275968759273
+
+2 day margin
+slope = 0.931752565668, intercept= 0.213405403553, r_value=0.0115806917753, p_value=0.166032524462, std_err=0.672679541711
+2 day margin correlation with sentiment : 0.0115806917753
+
+3 day margin
+slope = 0.272668427103, intercept= 0.214949576454, r_value=0.00398381141558, p_value=0.633916573885, std_err=0.572554088793
+3 day margin correlation with sentiment : 0.00398381141558
+
+4 day margin
+slope = -0.191817096061, intercept= 0.215885503494, r_value=-0.00315862462928, p_value=0.705880971207, std_err=0.508257573006
+4 day margin correlation with sentiment : -0.00315862462928
+
+5 day margin
+slope = -0.83095645432, intercept= 0.217773309018, r_value=-0.0149785544716, p_value=0.0735562480762, std_err=0.464352354317
+5 day margin correlation with sentiment : -0.0149785544716
+
+6 day margin
+slope = -0.85229949602, intercept= 0.218224063795, r_value=-0.0164722195849, p_value=0.0490884423039, std_err=0.433081063499
+6 day margin correlation with sentiment : -0.0164722195849
+
+7 day margin
+slope = -0.847485131248, intercept= 0.218595334801, r_value=-0.0174087985547, p_value=0.0375506868336, std_err=0.407460469258
+7 day margin correlation with sentiment : -0.0174087985547
+
+
+
+1 day
+slope = 2.89984581182, intercept= 0.209755629138, r_value=0.0281476339681, p_value=0.000746281836235, std_err=0.859796131727
+1 day correlation with sentiment : 0.0281476339681
+
+2 day
+slope = 0.977990749199, intercept= 0.210457666675, r_value=0.0121636769042, p_value=0.145135611436, std_err=0.671231497312
+2 day correlation with sentiment : 0.0121636769042
+
+3 day
+slope = 0.352844949342, intercept= 0.211308532165, r_value=0.0051636691386, p_value=0.536279295521, std_err=0.570518106149
+3 day correlation with sentiment : 0.0051636691386
+
+4 day
+slope = -0.0984640748315, intercept= 0.212158461421, r_value=-0.00162524034775, p_value=0.845670100199, std_err=0.505853194936
+4 day correlation with sentiment : -0.00162524034775
+
+5 day
+slope = -0.729065284918, intercept= 0.213601331729, r_value=-0.0131723852548, p_value=0.114658537639, std_err=0.462108881204
+5 day correlation with sentiment : -0.0131723852548
+
+6 day
+slope = -0.753754179517, intercept= 0.214321699086, r_value=-0.0146001704288, p_value=0.0803897178909, std_err=0.43107311634
+6 day correlation with sentiment : -0.0146001704288
+
+7 day
+slope = -0.777249846885, intercept= 0.215181372391, r_value=-0.0160010345088, p_value=0.0554661781477, std_err=0.405797777379
+7 day correlation with sentiment : -0.0160010345088
